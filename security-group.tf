@@ -1,6 +1,6 @@
 resource "aws_security_group" "mul_security_group" {
   name   = "mul_security_group"
-  vpc_id = aws_vpc.mul_vpc.id
+  vpc_id = aws_vpc.tns_vpc.id
 }
 
 # 80番ポート(http)許可のインバウンドルール
