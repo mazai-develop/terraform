@@ -1,9 +1,5 @@
-data aws_route53_zone host_domain {
+resource "aws_route53_zone" "technonebulas" {
   name = "technonebulas.net"
-}
-
-resource "aws_route53_zone" "app_technonebulas" {
-  name = "app.technonebulas.net"
 }
 
 resource "aws_route53_record" "cert_validation" {
@@ -22,12 +18,12 @@ resource "aws_route53_record" "cert_validation" {
   ttl             = "300"
 
   # レコードを追加するドメインのホストゾーンIDを指定
-  zone_id = aws_route53_zone.app_technonebulas.id
+  zone_id = aws_route53_zone.technonebulas.id
 }
 
 resource "aws_acm_certificate" "acm" {
-  domain_name               = aws_route53_zone.app_technonebulas.name
-  subject_alternative_names = ["*.${aws_route53_zone.app_technonebulas.name}"]
+  domain_name               = aws_route53_zone.technonebulas.name
+  subject_alternative_names = ["*.${aws_route53_zone.technonebulas.name}"]
   validation_method         = "DNS"
 
   lifecycle {

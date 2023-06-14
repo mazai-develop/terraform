@@ -144,7 +144,7 @@ resource "aws_lb_listener_rule" "http_to_https" {
 
   condition {
     host_header {
-        values = ["${aws_route53_zone.app_technonebulas.name}"]
+        values = ["${aws_route53_zone.technonebulas.name}"]
     }
   }
 }
